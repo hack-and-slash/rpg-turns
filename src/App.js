@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import CharacterForm from './components/CharacterForm';
+import InitiativeList from './components/InitiativeList';
 
 class App extends Component {
+  state = {
+    characters: [],
+    turn: 0
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      characters: [
+        ...this.state.characters,
+        {
+          name: event.target.name.value,
+          initiative: event.target.initiative.value,
+        }
+      ]
+    })
+  }
+
+  handleNextTurn = () => {
+    const nextTurn = this.state.characters.length - 1 > this.state.turn ? this.state.turn + 1 : 0
+    this.setState({ turn: nextTurn })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <CharacterForm onSubmit={this.handleSubmit} />
+        <button onClick={this.handleNextTurn}>next</button>
+        <InitiativeList characters={this.state.characters} turn={this.state.turn} />
+      </React.Fragment>
     );
   }
 }
