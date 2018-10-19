@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 describe('RPG Turns', () => {
   it('should add the characters ordered by initiative', () => {
     const data = [
