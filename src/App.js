@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Formik } from 'formik';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
@@ -9,18 +10,17 @@ class App extends Component {
     turn: 0
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
+  handleSubmit = (values, actions) => {
     this.setState({
       characters: [
         ...this.state.characters,
         {
-          name: event.target.name.value,
-          initiative: event.target.initiative.value,
+          name: values.name,
+          initiative: values.initiative,
         }
       ]
     })
+    actions.resetForm();
   }
 
   handleNextTurn = () => {
@@ -31,7 +31,11 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <CharacterForm onSubmit={this.handleSubmit} />
+        <Formik
+          initialValues={{ name: '', initiative: '' }}
+          onSubmit={this.handleSubmit}
+          render={props => <CharacterForm props={{...props }}/>}
+        />
         <button onClick={this.handleNextTurn}>next</button>
         <InitiativeList characters={this.state.characters} turn={this.state.turn} />
       </React.Fragment>

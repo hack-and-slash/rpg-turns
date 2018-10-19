@@ -1,11 +1,24 @@
 import React from 'react'
 
-const CharacterForm = ({ onSubmit }) => {
+const CharacterForm = ({ props }) => {
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="name" placeholder="Name" autoFocus />
-      <input type="number" name="initiative" placeholder="Initiative roll" />
-      <button>add</button>
+    <form onSubmit={props.handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={props.values.name}
+        onChange={props.handleChange}
+        autoFocus
+      />
+      <input
+        type="number"
+        name="initiative"
+        placeholder="Initiative roll"
+        value={props.values.initiative}
+        onChange={props.handleChange}
+       />
+      <button type="submit">add</button>
     </form>
   )
 }
