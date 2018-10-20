@@ -1,5 +1,11 @@
 import React from 'react'
 import { Formik } from 'formik';
+import styled from 'styled-components'
+
+const FormComponent = styled.form`
+  display: grid;
+  grid-template-column: 1fr;
+`
 
 const CharacterForm = ({ handleSubmit }) => {
   return (
@@ -8,7 +14,7 @@ const CharacterForm = ({ handleSubmit }) => {
       onSubmit={handleSubmit}
       render={props => {
         return (
-          <form onSubmit={props.handleSubmit}>
+          <FormComponent onSubmit={props.handleSubmit}>
             <input
               type="text"
               name="name"
@@ -25,7 +31,7 @@ const CharacterForm = ({ handleSubmit }) => {
               onChange={props.handleChange}
             />
           <button type="submit">add</button>
-        </form>
+        </FormComponent>
         )}}
       />
   )
