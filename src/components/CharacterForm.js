@@ -2,6 +2,8 @@ import React from 'react'
 import { Formik } from 'formik';
 import styled from 'styled-components'
 
+import Button from './Button'
+
 const FormComponent = styled.form`
   display: grid;
   grid-template-column: 1fr;
@@ -30,7 +32,7 @@ const CharacterForm = ({ handleSubmit }) => {
               value={props.values.initiative}
               onChange={props.handleChange}
             />
-          <button type="submit">add</button>
+          <Button uppercase type="submit">add</Button>
         </FormComponent>
         )}}
       />
