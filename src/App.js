@@ -6,7 +6,7 @@ import InitiativeList from './components/InitiativeList';
 class App extends Component {
   state = {
     characters: [],
-    turn: 0
+    turn: 0,
   }
 
   handleSubmit = (values, actions) => {
@@ -14,29 +14,34 @@ class App extends Component {
       return;
     }
 
+    const { characters } = this.state;
+
     this.setState({
       characters: [
-        ...this.state.characters,
+        ...characters,
         {
           name: values.name,
           initiative: values.initiative,
-        }
-      ]
-    })
+        },
+      ],
+    });
     actions.resetForm();
   }
 
   handleNextTurn = () => {
-    const nextTurn = this.state.characters.length - 1 > this.state.turn ? this.state.turn + 1 : 0
-    this.setState({ turn: nextTurn })
+    const { characters, turn } = this.state;
+    const nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
+    this.setState({ turn: nextTurn });
   }
 
   render() {
+    const { characters, turn } = this.state;
+
     return (
       <React.Fragment>
         <CharacterForm handleSubmit={this.handleSubmit} />
-        <button onClick={this.handleNextTurn}>next</button>
-        <InitiativeList characters={this.state.characters} turn={this.state.turn} />
+        <button onClick={this.handleNextTurn} type="button">next</button>
+        <InitiativeList characters={characters} turn={turn} />
       </React.Fragment>
     );
   }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import styled from 'styled-components'
 
@@ -44,5 +45,11 @@ const CharacterForm = ({ handleSubmit }) => {
       />
   )
 }
+
+CharacterForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  values: PropTypes.object.isRequired,
+};
 
 export default CharacterForm;

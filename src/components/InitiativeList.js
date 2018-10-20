@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function InitiativeList(props) {
-  const orderedInitiative = props.characters.sort((a, b) => b.initiative - a.initiative);
+export default function InitiativeList({ characters, turn }) {
+  const orderedInitiative = characters.sort((a, b) => b.initiative - a.initiative);
 
   return (
     <table>
@@ -18,5 +19,10 @@ export default function InitiativeList(props) {
         </tr>
       ))}
     </table>
-  )
+  );
 }
+
+InitiativeList.propTypes = {
+  characters: PropTypes.array.isRequired,
+  turn: PropTypes.number.isRequired,
+};
