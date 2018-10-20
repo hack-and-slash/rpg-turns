@@ -5,9 +5,9 @@ describe('RPG Turns', () => {
     const data = [
       { name: 'Galmiir', initiative: 10 },
       { name: 'Tuti', initiative: 15 }
-    ]
+    ];
 
-    cy.visit('/')
+    cy.visit('/');
 
     data.map((character) => {
       cy.get('input[name="name"]').type(character.name);
@@ -18,11 +18,17 @@ describe('RPG Turns', () => {
     const dataOrderedByInitiative = [
       { name: 'Tuti', initiative: 15 },
       { name: 'Galmiir', initiative: 10 }
-    ]
+    ];
 
     dataOrderedByInitiative.map((character, index) => {
       cy.contains(`tr:nth-child(${index + 2}) td:nth-child(1)`, character.name);
       cy.contains(`tr:nth-child(${index + 2}) td:nth-child(2)`, character.initiative);
-    })
+    });
+  });
+
+  it('should prevent empty forms to be submitted', () => {
+    cy.visit('/');
+    cy.contains('add').click();
+    cy.get('table').find('tr').should('have.length', 1);
   });
 });
