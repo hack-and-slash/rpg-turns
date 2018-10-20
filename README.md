@@ -8,24 +8,27 @@ System-agnostic Tabletop RPG combat turn tracker
 
 ```
 npm install
+or
+yarn
 ```
 
 ## Running
 
 ```
 npm start
+or
+yarn start
 ```
 
 The app will be available on http://localhost:3000
 
 ## Testing
 
-Install [cypress.io](https://www.cypress.io):
+Run cypress
 ```
-npm install --global cypress
+npm run cypress open
+or
+yarn cypress open
 ```
+Click on `run all specs` button.
 
-[start the app](#running) and run the test suite:
-```
-cypress run
-```
