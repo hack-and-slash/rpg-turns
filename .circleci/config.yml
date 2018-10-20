@@ -23,5 +23,5 @@ jobs:
           background: true
       - run:
           name: Run E2E tests
-          command: $(npm bin)/cypress run --record
+          command: $(yarn bin)/cypress run
           when: on_success
