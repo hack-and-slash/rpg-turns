@@ -9,6 +9,10 @@ const FormComponent = styled.form`
   grid-template-column: 1fr;
 `
 
+const InputComponent = styled.input`
+  padding: 10px;
+`
+
 const CharacterForm = ({ handleSubmit }) => {
   return (
     <Formik
@@ -17,7 +21,7 @@ const CharacterForm = ({ handleSubmit }) => {
       render={props => {
         return (
           <FormComponent onSubmit={props.handleSubmit}>
-            <input
+            <InputComponent
               type="text"
               name="name"
               placeholder="Name"
@@ -25,7 +29,7 @@ const CharacterForm = ({ handleSubmit }) => {
               onChange={props.handleChange}
               autoFocus
             />
-            <input
+            <InputComponent
               type="number"
               name="initiative"
               placeholder="Initiative roll"
