@@ -28,6 +28,7 @@ const CharacterForm = ({ handleSubmit }) => {
               value={props.values.name}
               onChange={props.handleChange}
               autoFocus
+              required
             />
             <InputComponent
               type="number"
@@ -35,6 +36,7 @@ const CharacterForm = ({ handleSubmit }) => {
               placeholder="Initiative roll"
               value={props.values.initiative}
               onChange={props.handleChange}
+              required
             />
           <Button uppercase type="submit">add</Button>
         </FormComponent>
