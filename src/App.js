@@ -10,6 +10,10 @@ class App extends Component {
   }
 
   handleSubmit = (values, actions) => {
+    if( !(values.name && values.initiative) ) {
+      return;
+    }
+
     this.setState({
       characters: [
         ...this.state.characters,
