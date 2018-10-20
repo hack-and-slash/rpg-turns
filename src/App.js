@@ -9,18 +9,17 @@ class App extends Component {
     turn: 0
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
+  handleSubmit = (values, actions) => {
     this.setState({
       characters: [
         ...this.state.characters,
         {
-          name: event.target.name.value,
-          initiative: event.target.initiative.value,
+          name: values.name,
+          initiative: values.initiative,
         }
       ]
     })
+    actions.resetForm();
   }
 
   handleNextTurn = () => {
@@ -31,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <CharacterForm onSubmit={this.handleSubmit} />
+        <CharacterForm handleSubmit={this.handleSubmit} />
         <button onClick={this.handleNextTurn}>next</button>
         <InitiativeList characters={this.state.characters} turn={this.state.turn} />
       </React.Fragment>
