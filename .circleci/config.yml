@@ -19,4 +19,11 @@ jobs:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ~/.cache
-      - run: $(yarn bin)/cypress run
+      - run:
+          name: Background the app
+          command: yarn start
+          background: true
+      - run:
+          name: Run E2E tests
+          command: $(npm bin)/cypress run --record
+          when: on_success
