@@ -10,11 +10,12 @@ const ButtonStyled = styled.button`
   `}
 `
 
-const Button = ({ uppercase, children, onClick }) => (
+const Button = ({ uppercase, children, onClick, type }) => (
   <React.Fragment>
     <ButtonStyled
       uppercase={uppercase}
       onClick={onClick}
+      type={type}
     >
       {children}
     </ButtonStyled>
