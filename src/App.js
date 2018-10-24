@@ -5,7 +5,33 @@ import InitiativeList from './components/InitiativeList';
 
 class App extends Component {
   state = {
-    characters: [],
+    characters: [
+      {
+        name: 'teste1',
+        initiative: 8,
+        hp: 12,
+      },
+      {
+        name: 'teste2',
+        initiative: 5,
+        hp: 0,
+      },
+      {
+        name: 'teste3',
+        initiative: 7,
+        hp: 0,
+      },
+      {
+        name: 'teste4',
+        initiative: 3,
+        hp: 25,
+      },
+      {
+        name: 'teste4',
+        initiative: 2,
+        hp: 0,
+      },
+    ],
     turn: 0,
   }
 
@@ -18,6 +44,7 @@ class App extends Component {
         {
           name: values.name,
           initiative: values.initiative,
+          hp: values.hp,
         },
       ],
     });
@@ -26,7 +53,16 @@ class App extends Component {
 
   handleNextTurn = () => {
     const { characters, turn } = this.state;
-    const nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
+    let nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
+    while (characters[nextTurn].hp <= 0) {
+
+      nextTurn += 1;
+
+      if (nextTurn >= characters.length - 1) {
+        nextTurn = 0;
+      }
+    }
+
     this.setState({ turn: nextTurn });
   }
 
