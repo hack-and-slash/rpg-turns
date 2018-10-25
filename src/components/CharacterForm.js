@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 
 const CharacterForm = ({ handleSubmit }) => (
   <Formik
-    initialValues={{ name: '', initiative: '', hp: '' }}
+    initialValues={{ name: '', initiative: 0, hp: 0 }}
     onSubmit={handleSubmit}
     render={props => (
       <form onSubmit={props.handleSubmit}>
