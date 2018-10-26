@@ -28,15 +28,20 @@ class App extends Component {
   handleNextTurn = () => {
     const { characters, turn } = this.state;
     let nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
-    while (characters[nextTurn].hp <= 0) {
-      nextTurn++;
+    const teste = characters.filter((character) => {
+      return character.hp > 0;
+    });
 
-      if (nextTurn >= characters.length - 1) {
-        nextTurn = 0;
+    if (teste.length > 1) {
+      while (characters[nextTurn].hp <= 0) {
+        nextTurn++;
+
+        if (nextTurn > characters.length - 1) {
+          nextTurn = 0;
+        }
       }
+      this.setState({ turn: nextTurn });
     }
-
-    this.setState({ turn: nextTurn });
   }
 
   render() {
