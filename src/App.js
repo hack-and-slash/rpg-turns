@@ -7,6 +7,11 @@ const isFormFilled = (values, requiredFields) => !requiredFields
   .map(field => values[field] ? true : false)
   .includes(false);
 
+const requiredFields = [
+  'name',
+  'initiative',
+];
+
 class App extends Component {
   state = {
     characters: [],
