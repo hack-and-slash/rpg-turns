@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   handleSubmit = (values, actions) => {
-    if( !(values.name && values.initiative) ) {
+    if (isFormFilled(values, [requiredFields])) {
       return;
     }
 
