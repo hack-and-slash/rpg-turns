@@ -5,10 +5,17 @@ import { Formik } from 'formik';
 
 const CharacterForm = ({ handleSubmit }) => (
   <Formik
-    initialValues={{ name: '', initiative: '' }}
+    initialValues={{ name: '', initiative: '', howMany: '' }}
     onSubmit={handleSubmit}
     render={props => (
       <form onSubmit={props.handleSubmit}>
+        <input
+          type="number"
+          name="howMany"
+          placeholder="How many"
+          value={props.values.howMany}
+          onChange={props.handleChange}
+        />
         <input
           type="text"
           name="name"
