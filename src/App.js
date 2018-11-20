@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import nanoid from 'nanoid';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
@@ -10,17 +11,23 @@ class App extends Component {
   }
 
   handleSubmit = (values, actions) => {
+    const { howMany, name, initiative } = values;
     const { characters } = this.state;
+
+    const numberOfCharacters = Array(howMany || 1);
+    const newCharacters = Array.from(numberOfCharacters, (value, index) => ({
+      id: nanoid(),
+      name: numberOfCharacters.length > 1 ? `${name} ${index + 1}` : name,
+      initiative,
+    }));
 
     this.setState({
       characters: [
         ...characters,
-        {
-          name: values.name,
-          initiative: values.initiative,
-        },
+        ...newCharacters,
       ],
     });
+
     actions.resetForm();
   }
 
