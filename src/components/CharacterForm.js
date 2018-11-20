@@ -38,9 +38,13 @@ const CharacterForm = ({ handleSubmit }) => (
 
 CharacterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  values: PropTypes.object.isRequired,
+  handleChange: PropTypes.func,
+  values: PropTypes.object,
 };
 
+CharacterForm.defaultProps = {
+  handleChange: undefined,
+  values: {},
+};
 
 export default CharacterForm;
