@@ -37,6 +37,16 @@ class App extends Component {
     this.setState({ turn: nextTurn });
   }
 
+  removeCharacter = (removingCharacterId) => {
+    const { characters } = this.state;
+    const newCharactersList = characters.filter(character => character.id !== removingCharacterId);
+    this.setState({
+      characters: [
+        ...newCharactersList,
+      ],
+    });
+  }
+
   render() {
     const { characters, turn } = this.state;
 
@@ -44,7 +54,7 @@ class App extends Component {
       <React.Fragment>
         <CharacterForm handleSubmit={this.handleSubmit} />
         <button onClick={this.handleNextTurn} type="button">next</button>
-        <InitiativeList characters={characters} turn={turn} />
+        <InitiativeList characters={characters} turn={turn} removeCharacter={this.removeCharacter} />
       </React.Fragment>
     );
   }
