@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import nanoid from 'nanoid';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
@@ -10,21 +11,27 @@ class App extends Component {
   }
 
   handleSubmit = (values, actions) => {
-    if( !(values.name && values.initiative) ) {
+    const { howMany, name, initiative } = values;
+    if (!(values.name && values.initiative)) {
       return;
     }
 
     const { characters } = this.state;
 
+    const numberOfCharacters = Array(howMany || 1);
+    const newCharacters = Array.from(numberOfCharacters, (value, index) => ({
+      id: nanoid(),
+      name: numberOfCharacters.length > 1 ? `${name} ${index + 1}` : name,
+      initiative,
+    }));
+
     this.setState({
       characters: [
         ...characters,
-        {
-          name: values.name,
-          initiative: values.initiative,
-        },
+        ...newCharacters,
       ],
     });
+
     actions.resetForm();
   }
 
@@ -34,6 +41,16 @@ class App extends Component {
     this.setState({ turn: nextTurn });
   }
 
+  removeCharacter = (removingCharacterId) => {
+    const { characters } = this.state;
+    const newCharactersList = characters.filter(character => character.id !== removingCharacterId);
+    this.setState({
+      characters: [
+        ...newCharactersList,
+      ],
+    });
+  }
+
   render() {
     const { characters, turn } = this.state;
 
@@ -41,7 +58,11 @@ class App extends Component {
       <React.Fragment>
         <CharacterForm handleSubmit={this.handleSubmit} />
         <button onClick={this.handleNextTurn} type="button">next</button>
-        <InitiativeList characters={characters} turn={turn} />
+        <InitiativeList
+          characters={characters}
+          turn={turn}
+          removeCharacter={this.removeCharacter}
+        />
       </React.Fragment>
     );
   }

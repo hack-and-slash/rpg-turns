@@ -1,5 +1,6 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const ButtonStyled = styled.button`
   padding: 10px;
@@ -8,9 +9,11 @@ const ButtonStyled = styled.button`
   ${props => props.uppercase && css`
     text-transform: uppercase;
   `}
-`
+`;
 
-const Button = ({ uppercase, children, onClick, type }) => (
+const Button = ({
+  uppercase, children, onClick, type,
+}) => ((
   <React.Fragment>
     <ButtonStyled
       uppercase={uppercase}
@@ -20,6 +23,14 @@ const Button = ({ uppercase, children, onClick, type }) => (
       {children}
     </ButtonStyled>
   </React.Fragment>
-)
+));
 
-export default Button
+
+Button.propTypes = {
+  uppercase: PropTypes.bool,
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+};
+
+export default Button;
