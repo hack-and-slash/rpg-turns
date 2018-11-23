@@ -3,6 +3,15 @@ import React, { Component } from 'react';
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
 
+const isFormFilled = (values, requiredFields) => !requiredFields
+  .map(field => values[field] ? true : false)
+  .includes(false);
+
+const requiredFields = [
+  'name',
+  'initiative',
+];
+
 class App extends Component {
   state = {
     characters: [],
@@ -10,7 +19,7 @@ class App extends Component {
   }
 
   handleSubmit = (values, actions) => {
-    if( !(values.name && values.initiative) ) {
+    if (isFormFilled(values, [requiredFields])) {
       return;
     }
 
