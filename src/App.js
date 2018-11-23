@@ -54,7 +54,11 @@ class App extends Component {
       <React.Fragment>
         <CharacterForm handleSubmit={this.handleSubmit} />
         <button onClick={this.handleNextTurn} type="button">next</button>
-        <InitiativeList characters={characters} turn={turn} removeCharacter={this.removeCharacter} />
+        <InitiativeList
+          characters={characters}
+          turn={turn}
+          removeCharacter={this.removeCharacter}
+        />
       </React.Fragment>
     );
   }
