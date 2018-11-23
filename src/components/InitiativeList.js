@@ -13,7 +13,7 @@ export default function InitiativeList({ characters, turn }) {
         </tr>
       </thead>
       {orderedInitiative.map((character, index) => (
-        <tr style={turn === index ? { backgroundColor: '#f0f' } : null}>
+        <tr key={index} style={props.turn === index ? { backgroundColor: '#f0f' } : null}>
           <td>{character.name}</td>
           <td>{character.initiative}</td>
         </tr>
