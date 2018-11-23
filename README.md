@@ -1,4 +1,4 @@
-# RPG Turns
+# RPG Turns [![CircleCI](https://circleci.com/gh/hack-and-slash/rpg-turns.svg?style=svg)](https://circleci.com/gh/hack-and-slash/rpg-turns)
 
 RPG Turns is a system-agnostic Tabletop RPG combat turn tracker, focused on giving an easy and better experience to all RPG players when controlling combat flow. We value small, independent and focused applications that we plan to integrate into a full-fledged RPG session management tool.
 

@@ -12,6 +12,10 @@ class App extends Component {
 
   handleSubmit = (values, actions) => {
     const { howMany, name, initiative } = values;
+    if (!(values.name && values.initiative)) {
+      return;
+    }
+
     const { characters } = this.state;
 
     const numberOfCharacters = Array(howMany || 1);

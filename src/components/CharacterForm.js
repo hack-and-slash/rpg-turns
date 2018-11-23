@@ -1,37 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import styled from 'styled-components';
 
+import Button from './Button';
+
+const FormComponent = styled.form`
+  display: grid;
+  grid-template-column: 1fr;
+`;
+
+const InputComponent = styled.input`
+  padding: 10px;
+`;
 
 const CharacterForm = ({ handleSubmit }) => (
   <Formik
     initialValues={{ name: '', initiative: '', howMany: '' }}
     onSubmit={handleSubmit}
     render={props => (
-      <form onSubmit={props.handleSubmit}>
-        <input
+      <FormComponent onSubmit={props.handleSubmit}>
+        <InputComponent
           type="number"
           name="howMany"
           placeholder="How many"
           value={props.values.howMany}
           onChange={props.handleChange}
+          autoFocus
         />
-        <input
+        <InputComponent
           type="text"
           name="name"
           placeholder="Name"
           value={props.values.name}
           onChange={props.handleChange}
+          required
         />
-        <input
+        <InputComponent
           type="number"
           name="initiative"
           placeholder="Initiative roll"
           value={props.values.initiative}
           onChange={props.handleChange}
+          required
         />
-        <button type="submit">add</button>
-      </form>
+        <Button uppercase type="submit">add</Button>
+      </FormComponent>
     )}
   />
 );
