@@ -19,12 +19,12 @@ jobs:
             - ~/.cache
       - run:
           name: Run eslint validation
-          command: $npm run eslint src
+          command: npm run eslint src
       - run:
           name: Background the app
           command: npm start
           background: true
       - run:
           name: Run E2E tests
-          command: $npm run cypress run --record
+          command: npm run cypress run --record
           when: on_success
