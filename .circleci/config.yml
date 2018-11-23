@@ -12,19 +12,19 @@ jobs:
           key: v1-deps
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: npm install
       - save_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ~/.cache
       - run:
           name: Run eslint validation
-          command: $(yarn bin)/eslint src
+          command: $npm run eslint src
       - run:
           name: Background the app
-          command: yarn start
+          command: npm start
           background: true
       - run:
           name: Run E2E tests
-          command: $(yarn bin)/cypress run --record
+          command: $npm run cypress run --record
           when: on_success
