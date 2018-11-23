@@ -10,12 +10,14 @@ export default function InitiativeList({ characters, turn }) {
         <tr>
           <th>Name</th>
           <th>Initiative</th>
+          <th>HP</th>
         </tr>
       </thead>
       {orderedInitiative.map((character, index) => (
         <tr style={turn === index ? { backgroundColor: '#f0f' } : null}>
           <td>{character.name}</td>
           <td>{character.initiative}</td>
+          <td>{character.hp}</td>
         </tr>
       ))}
     </table>

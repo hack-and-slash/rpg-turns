@@ -18,6 +18,7 @@ class App extends Component {
         {
           name: values.name,
           initiative: values.initiative,
+          hp: values.hp,
         },
       ],
     });
@@ -26,8 +27,21 @@ class App extends Component {
 
   handleNextTurn = () => {
     const { characters, turn } = this.state;
-    const nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
-    this.setState({ turn: nextTurn });
+    let nextTurn = characters.length - 1 > turn ? turn + 1 : 0;
+    const teste = characters.filter((character) => {
+      return character.hp > 0;
+    });
+
+    if (teste.length > 1) {
+      while (characters[nextTurn].hp <= 0) {
+        nextTurn++;
+
+        if (nextTurn > characters.length - 1) {
+          nextTurn = 0;
+        }
+      }
+      this.setState({ turn: nextTurn });
+    }
   }
 
   render() {

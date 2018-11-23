@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 
 const CharacterForm = ({ handleSubmit }) => (
   <Formik
-    initialValues={{ name: '', initiative: '' }}
+    initialValues={{ name: '', initiative: 0, hp: 0 }}
     onSubmit={handleSubmit}
     render={props => (
       <form onSubmit={props.handleSubmit}>
@@ -21,6 +21,13 @@ const CharacterForm = ({ handleSubmit }) => (
           name="initiative"
           placeholder="Initiative roll"
           value={props.values.initiative}
+          onChange={props.handleChange}
+        />
+        <input
+          type="number"
+          name="hp"
+          placeholder="Player hp"
+          value={props.values.hp}
           onChange={props.handleChange}
         />
         <button type="submit">add</button>
