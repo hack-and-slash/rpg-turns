@@ -18,6 +18,9 @@ jobs:
           paths:
             - ~/.cache
       - run:
+          name: Run eslint validation
+          command: $(yarn bin)/eslint src
+      - run:
           name: Background the app
           command: yarn start
           background: true
