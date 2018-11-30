@@ -31,4 +31,17 @@ describe('RPG Turns', () => {
     cy.contains('add').click();
     cy.get('table').find('tr').should('have.length', 1);
   });
+
+  it('should add multiples characters when how many field is filled', () => {
+    const numberOfCharacters = 10;
+
+    cy.visit('/');
+
+    cy.get('input[name="howMany"]').type(numberOfCharacters);
+    cy.get('input[name="name"]').type('Goblin');
+    cy.get('input[name="initiative"]').type(8);
+    cy.contains('add').click();
+
+    cy.get('table').find('tr').should('have.length', numberOfCharacters + 1);
+  });
 });
