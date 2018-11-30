@@ -54,7 +54,23 @@ describe('RPG Turns', () => {
 
     cy.get('table').find('tr').should('have.length', 2);
 
-    cy.get('button[name="delete-button"]').click();
+    cy.get('[data-cy="delete-button"]').click();
     cy.get('table').find('tr').should('have.length', 1);
+  });
+
+  it('should move to the next character on-turn class when click in next', () => {
+    const numberOfCharacters = 5;
+    cy.visit('/');
+
+    cy.get('input[name="howMany"]').type(numberOfCharacters);
+    cy.get('input[name="name"]').type('Goblin');
+    cy.get('input[name="initiative"]').type(2);
+    cy.contains('add').click();
+
+    cy.get('tr:nth-child(1)').should('has.class', 'on-turn');
+
+    cy.get('[data-cy="next-button"]').click();
+
+    cy.get('tr:nth-child(2)').should('has.class', 'on-turn');
   });
 });

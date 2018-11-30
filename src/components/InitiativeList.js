@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+import './InitiativeList.css';
 
 export default function InitiativeList({ characters, turn, removeCharacter }) {
   const orderedInitiative = characters.sort((a, b) => b.initiative - a.initiative);
@@ -14,10 +17,14 @@ export default function InitiativeList({ characters, turn, removeCharacter }) {
       </thead>
       <tbody>
         {orderedInitiative.map((character, index) => (
-          <tr key={character.id} style={turn === index ? { backgroundColor: '#f0f' } : null}>
+          <tr
+            key={character.id}
+            className={
+            classnames({ 'on-turn': turn === index })}
+          >
             <td>{character.name}</td>
             <td>{character.initiative}</td>
-            <td><button type="button" name="delete-button" onClick={() => removeCharacter(character.id)}>x</button></td>
+            <td><button type="button" data-cy="delete-button" onClick={() => removeCharacter(character.id)}>x</button></td>
           </tr>
         ))}
       </tbody>

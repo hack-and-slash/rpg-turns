@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <CharacterForm handleSubmit={this.handleSubmit} />
-        <button onClick={this.handleNextTurn} type="button">next</button>
+        <button onClick={this.handleNextTurn} data-cy="next-button" type="button">next</button>
         <InitiativeList
           characters={characters}
           turn={turn}
