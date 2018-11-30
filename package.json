@@ -32,6 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "classnames": "^2.2.6",
     "cypress": "^3.1.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "^2.14.0",
