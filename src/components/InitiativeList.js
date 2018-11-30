@@ -17,7 +17,7 @@ export default function InitiativeList({ characters, turn, removeCharacter }) {
           <tr key={character.id} style={turn === index ? { backgroundColor: '#f0f' } : null}>
             <td>{character.name}</td>
             <td>{character.initiative}</td>
-            <td><button type="button" onClick={() => removeCharacter(character.id)}>x</button></td>
+            <td><button type="button" name="delete-button" onClick={() => removeCharacter(character.id)}>x</button></td>
           </tr>
         ))}
       </tbody>

@@ -44,4 +44,17 @@ describe('RPG Turns', () => {
 
     cy.get('table').find('tr').should('have.length', numberOfCharacters + 1);
   });
+
+  it('should remove an entry when click on remove button', () => {
+    cy.visit('/');
+
+    cy.get('input[name="name"]').type('Black Dragon');
+    cy.get('input[name="initiative"]').type(10);
+    cy.contains('add').click();
+
+    cy.get('table').find('tr').should('have.length', 2);
+
+    cy.get('button[name="delete-button"]').click();
+    cy.get('table').find('tr').should('have.length', 1);
+  });
 });
