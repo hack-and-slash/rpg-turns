@@ -3,6 +3,7 @@ import nanoid from 'nanoid';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
+import { Hello } from './components/Hello';
 
 class App extends Component {
   state = {
@@ -63,6 +64,7 @@ class App extends Component {
           turn={turn}
           removeCharacter={this.removeCharacter}
         />
+        <Hello compiler="foo" framework={13} />
       </React.Fragment>
     );
   }
