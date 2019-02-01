@@ -1,6 +1,9 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": "airbnb",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
     "react/require-default-props": 0,
     "react/forbid-prop-types": [
