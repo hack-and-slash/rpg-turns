@@ -2,9 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
+import colors from '../theme/colors';
+
 const ButtonStyled = styled.button`
-  padding: 10px;
+  padding: 8px;
   font-weight: 600;
+  border-radius: 3px;
+  color: ${colors.blue};
+  background-color: ${colors.white};
+  cursor: pointer;
+  border: 1px solid ${colors.blue};
 
   ${props => props.uppercase && css`
     text-transform: uppercase;
@@ -12,17 +19,14 @@ const ButtonStyled = styled.button`
 `;
 
 const Button = ({
-  uppercase, children, onClick, type,
+  uppercase, children, ...props
 }) => ((
-  <React.Fragment>
-    <ButtonStyled
-      uppercase={uppercase}
-      onClick={onClick}
-      type={type}
-    >
-      {children}
-    </ButtonStyled>
-  </React.Fragment>
+  <ButtonStyled
+    uppercase={uppercase}
+    {...props}
+  >
+    {children}
+  </ButtonStyled>
 ));
 
 
