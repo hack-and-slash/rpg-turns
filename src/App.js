@@ -1,8 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import nanoid from 'nanoid';
+import styled from 'styled-components';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
+import Header from './components/Header';
+
+const AppWrapper = styled.section`
+  display: block;
+  overflow: auto;
+  min-height: 100vh;
+  background-color: #F4F6F8;
+  padding-bottom: 20px;
+`;
+
+const AppCard = styled.div`
+  width: 400px;
+  max-width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px 0 rgba(63,63,68,.15);
+`;
 
 class App extends Component {
   state = {
@@ -55,15 +75,22 @@ class App extends Component {
     const { characters, turn } = this.state;
 
     return (
-      <React.Fragment>
-        <CharacterForm handleSubmit={this.handleSubmit} />
-        <button onClick={this.handleNextTurn} type="button">next</button>
-        <InitiativeList
-          characters={characters}
-          turn={turn}
-          removeCharacter={this.removeCharacter}
-        />
-      </React.Fragment>
+      <AppWrapper>
+        <Header />
+        <AppCard>
+          <CharacterForm handleSubmit={this.handleSubmit} />
+          {characters.length > 0 && (
+            <Fragment>
+              <button onClick={this.handleNextTurn} type="button">next</button>
+              <InitiativeList
+                characters={characters}
+                turn={turn}
+                removeCharacter={this.removeCharacter}
+              />
+            </Fragment>
+          )}
+        </AppCard>
+      </AppWrapper>
     );
   }
 }
