@@ -40,7 +40,7 @@ const AppCardBody = styled.div`
 
 class App extends Component {
   state = {
-    characters: [{ name: 'foo', initiative: 10 }],
+    characters: [],
     turn: 0,
   }
 
