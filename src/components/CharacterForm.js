@@ -11,7 +11,10 @@ const FormComponent = styled.form`
 `;
 
 const InputComponent = styled.input`
-  padding: 10px;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  border: 1px solid #DFE3E8;
 `;
 
 const CharacterForm = ({ handleSubmit }) => (
