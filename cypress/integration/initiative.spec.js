@@ -54,7 +54,7 @@ describe('RPG Turns', () => {
 
     cy.get('table').find('tr').should('have.length', 2);
 
-    cy.get('[data-cy="delete-button"]').click();
+    cy.get('[data-test-id="delete-button"]').click();
     cy.get('table').find('tr').should('have.length', 1);
   });
 
@@ -69,7 +69,7 @@ describe('RPG Turns', () => {
 
     cy.get('tr:nth-child(1)').should('has.class', 'on-turn');
 
-    cy.get('[data-cy="next-button"]').click();
+    cy.get('[data-test-id="next-button"]').click();
 
     cy.get('tr:nth-child(2)').should('has.class', 'on-turn');
   });
