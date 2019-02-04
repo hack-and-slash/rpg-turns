@@ -25,6 +25,7 @@ export default function InitiativeList({ characters, turn, removeCharacter }) {
             <td>{character.name}</td>
             <td>{character.initiative}</td>
             <td><button type="button" data-test-id="delete-button" onClick={() => removeCharacter(character.id)}>x</button></td>
+          </tr>
         ))}
       </tbody>
     </table>
