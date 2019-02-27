@@ -1,8 +1,42 @@
 import React, { Component } from 'react';
 import nanoid from 'nanoid';
+import styled from 'styled-components';
 
 import CharacterForm from './components/CharacterForm';
 import InitiativeList from './components/InitiativeList';
+import Header from './components/Header';
+import Button from './components/Button';
+
+const AppWrapper = styled.section`
+  display: block;
+  overflow: auto;
+  min-height: 100vh;
+  background-color: #F4F6F8;
+  padding-bottom: 16px;
+`;
+
+const AppCard = styled.div`
+  width: 400px;
+  max-width: 90%;
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px 0 rgba(63,63,68,.15);
+  margin-bottom: 8px;
+  overflow: hidden;
+`;
+
+const AppCardHeader = styled.div`
+  background-color: #F9FAFB;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const AppCardBody = styled.div`
+  padding: 16px;
+`;
 
 class App extends Component {
   state = {
@@ -55,15 +89,38 @@ class App extends Component {
     const { characters, turn } = this.state;
 
     return (
-      <React.Fragment>
-        <CharacterForm handleSubmit={this.handleSubmit} />
-        <button onClick={this.handleNextTurn} data-test-id="next-button" type="button">next</button>
-        <InitiativeList
-          characters={characters}
-          turn={turn}
-          removeCharacter={this.removeCharacter}
-        />
-      </React.Fragment>
+      <AppWrapper>
+        <Header />
+        <AppCard>
+          <AppCardHeader>
+            <p>
+              <strong>1 - </strong>
+              <span>Add your characters.</span>
+            </p>
+          </AppCardHeader>
+          <AppCardBody>
+            <CharacterForm handleSubmit={this.handleSubmit} />
+          </AppCardBody>
+        </AppCard>
+        {characters.length > 0 && (
+          <AppCard>
+            <AppCardHeader>
+              <p>
+                <strong>2 - </strong>
+                <span>Prepare for battle!</span>
+              </p>
+              <Button uppercase type="button" onClick={this.handleNextTurn}>Next turn</Button>
+            </AppCardHeader>
+            <AppCardBody>
+              <InitiativeList
+                characters={characters}
+                turn={turn}
+                removeCharacter={this.removeCharacter}
+              />
+            </AppCardBody>
+          </AppCard>
+        )}
+      </AppWrapper>
     );
   }
 }

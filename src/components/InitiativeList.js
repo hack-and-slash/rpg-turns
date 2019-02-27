@@ -1,14 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import styled, { css } from 'styled-components';
 
-import './InitiativeList.css';
+import Button from './Button';
+import icon from '../image/favicon.ico';
+
+const Table = styled.table`
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+`;
+
+const TableRow = styled.tr`
+  :not(:last-child) {
+    border-bottom: 1px solid #DFE3E8;
+  }
+`;
+
+const TableCell = styled.td`
+  padding: 8px 4px;
+
+  ${props => props.align && css`text-align: ${props.align};`}
+  ${props => props.isActive && css`font-weight: bold;`}
+`;
+
+const TurnIcon = styled.img`
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+`;
 
 export default function InitiativeList({ characters, turn, removeCharacter }) {
   const orderedInitiative = characters.sort((a, b) => b.initiative - a.initiative);
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
           <th>Name</th>
@@ -17,18 +43,21 @@ export default function InitiativeList({ characters, turn, removeCharacter }) {
       </thead>
       <tbody>
         {orderedInitiative.map((character, index) => (
-          <tr
-            key={character.id}
-            className={
-            classnames({ 'on-turn': turn === index })}
-          >
-            <td>{character.name}</td>
-            <td>{character.initiative}</td>
-            <td><button type="button" data-test-id="delete-button" onClick={() => removeCharacter(character.id)}>x</button></td>
-          </tr>
+          <TableRow key={character.id}>
+            <TableCell isActive={turn === index}>
+              {turn === index && (
+                <TurnIcon src={icon} />
+              )}
+              <span>{character.name}</span>
+            </TableCell>
+            <TableCell>{character.initiative}</TableCell>
+            <TableCell align="right">
+              <Button type="button" onClick={() => removeCharacter(character.id)} uppercase>Remove</Button>
+            </TableCell>
+          </TableRow>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 

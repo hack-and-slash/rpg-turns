@@ -29,7 +29,7 @@ describe('RPG Turns', () => {
   it('should prevent empty forms to be submitted', () => {
     cy.visit('/');
     cy.contains('add').click();
-    cy.get('table').find('tr').should('have.length', 1);
+    cy.get('table').should('have.length', 0);
   });
 
   it('should add multiples characters when how many field is filled', () => {
