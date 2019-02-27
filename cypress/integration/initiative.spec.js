@@ -55,7 +55,7 @@ describe('RPG Turns', () => {
     cy.get('table').find('tr').should('have.length', 2);
 
     cy.get('[data-test-id="delete-button"]').click();
-    cy.get('table').find('tr').should('have.length', 1);
+    cy.get('table').should('have.length', 0);
   });
 
   it('should move to the next character on-turn class when click in next', () => {
@@ -67,10 +67,12 @@ describe('RPG Turns', () => {
     cy.get('input[name="initiative"]').type(2);
     cy.contains('add').click();
 
-    cy.get('tr:nth-child(1)').should('has.class', 'on-turn');
+    cy.get('tbody tr:nth-child(1) td:nth-child(1) img')
+      .should('has.attr', 'data-test-id', 'turn-icon');
 
     cy.get('[data-test-id="next-button"]').click();
 
-    cy.get('tr:nth-child(2)').should('has.class', 'on-turn');
+    cy.get('tbody tr:nth-child(2) td:nth-child(1) img')
+      .should('has.attr', 'data-test-id', 'turn-icon');
   });
 });
