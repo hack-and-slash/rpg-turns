@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "http://hack-and-slash.github.io/rpg-turns",
   "dependencies": {
-    "classnames": "^2.2.6",
     "formik": "^1.4.3",
     "nanoid": "^2.0.1",
     "prop-types": "^15.6.2",
