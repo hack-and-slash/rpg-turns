@@ -1,13 +1,15 @@
 {
-  "main.css": "/rpg-turns/static/css/main.45bcc7e9.chunk.css",
-  "main.js": "/rpg-turns/static/js/main.b0a9d96f.chunk.js",
-  "main.js.map": "/rpg-turns/static/js/main.b0a9d96f.chunk.js.map",
-  "static/js/1.df861c2b.chunk.js": "/rpg-turns/static/js/1.df861c2b.chunk.js",
-  "static/js/1.df861c2b.chunk.js.map": "/rpg-turns/static/js/1.df861c2b.chunk.js.map",
+  "main.css": "/rpg-turns/static/css/main.b1e715ca.chunk.css",
+  "main.js": "/rpg-turns/static/js/main.cec052f5.chunk.js",
+  "main.js.map": "/rpg-turns/static/js/main.cec052f5.chunk.js.map",
+  "static/js/1.660f17b0.chunk.js": "/rpg-turns/static/js/1.660f17b0.chunk.js",
+  "static/js/1.660f17b0.chunk.js.map": "/rpg-turns/static/js/1.660f17b0.chunk.js.map",
   "runtime~main.js": "/rpg-turns/static/js/runtime~main.c6d7d589.js",
   "runtime~main.js.map": "/rpg-turns/static/js/runtime~main.c6d7d589.js.map",
-  "static/css/main.45bcc7e9.chunk.css.map": "/rpg-turns/static/css/main.45bcc7e9.chunk.css.map",
+  "static/css/main.b1e715ca.chunk.css.map": "/rpg-turns/static/css/main.b1e715ca.chunk.css.map",
+  "static/media/favicon.ico": "/rpg-turns/static/media/favicon.1321d1ea.ico",
+  "static/media/HackNSlash-text.svg": "/rpg-turns/static/media/HackNSlash-text.9eafeab9.svg",
   "index.html": "/rpg-turns/index.html",
-  "precache-manifest.66251056519eae2c293c1c9b5fec32c7.js": "/rpg-turns/precache-manifest.66251056519eae2c293c1c9b5fec32c7.js",
+  "precache-manifest.a370887398b7d96b98b93ecd6a372a12.js": "/rpg-turns/precache-manifest.a370887398b7d96b98b93ecd6a372a12.js",
   "service-worker.js": "/rpg-turns/service-worker.js"
 }
