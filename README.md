@@ -7,7 +7,7 @@ RPG Turns is a system-agnostic Tabletop RPG combat turn tracker, focused on givi
 We use [React](https://reactjs.org) to build an easy to use interface and [Firebase](https://firebase.google.com/) to store and share data between users so everyone is in the same turn.
 Also, [Cypress](https://www.cypress.io/) is used as test runner for easy to write and effective testing.
 
-![screenshot](assets/screenshot.png)
+![screenshot](assets/demo.gif)
 
 # Contribution
 
