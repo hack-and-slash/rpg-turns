@@ -31,4 +31,48 @@ describe('RPG Turns', () => {
     cy.contains('add').click();
     cy.get('table').should('have.length', 0);
   });
+
+  it('should add multiples characters when how many field is filled', () => {
+    const numberOfCharacters = 10;
+
+    cy.visit('/');
+
+    cy.get('input[name="howMany"]').type(numberOfCharacters);
+    cy.get('input[name="name"]').type('Goblin');
+    cy.get('input[name="initiative"]').type(8);
+    cy.contains('add').click();
+
+    cy.get('table').find('tr').should('have.length', numberOfCharacters + 1);
+  });
+
+  it('should remove an entry when click on remove button', () => {
+    cy.visit('/');
+
+    cy.get('input[name="name"]').type('Black Dragon');
+    cy.get('input[name="initiative"]').type(10);
+    cy.contains('add').click();
+
+    cy.get('table').find('tr').should('have.length', 2);
+
+    cy.get('[data-test-id="delete-button"]').click();
+    cy.get('table').should('have.length', 0);
+  });
+
+  it('should move to the next character on-turn class when click in next', () => {
+    const numberOfCharacters = 5;
+    cy.visit('/');
+
+    cy.get('input[name="howMany"]').type(numberOfCharacters);
+    cy.get('input[name="name"]').type('Goblin');
+    cy.get('input[name="initiative"]').type(2);
+    cy.contains('add').click();
+
+    cy.get('tbody tr:nth-child(1) td:nth-child(1) img')
+      .should('has.attr', 'data-test-id', 'turn-icon');
+
+    cy.get('[data-test-id="next-button"]').click();
+
+    cy.get('tbody tr:nth-child(2) td:nth-child(1) img')
+      .should('has.attr', 'data-test-id', 'turn-icon');
+  });
 });

@@ -46,13 +46,20 @@ export default function InitiativeList({ characters, turn, removeCharacter }) {
           <TableRow key={character.id}>
             <TableCell isActive={turn === index}>
               {turn === index && (
-                <TurnIcon src={icon} />
+                <TurnIcon src={icon} data-test-id="turn-icon" />
               )}
               <span>{character.name}</span>
             </TableCell>
             <TableCell>{character.initiative}</TableCell>
             <TableCell align="right">
-              <Button type="button" onClick={() => removeCharacter(character.id)} uppercase>Remove</Button>
+              <Button
+                type="button"
+                data-test-id="delete-button"
+                onClick={() => removeCharacter(character.id)}
+                uppercase
+              >
+                Remove
+              </Button>
             </TableCell>
           </TableRow>
         ))}

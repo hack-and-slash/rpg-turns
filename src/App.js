@@ -109,7 +109,14 @@ class App extends Component {
                 <strong>2 - </strong>
                 <span>Prepare for battle!</span>
               </p>
-              <Button uppercase type="button" onClick={this.handleNextTurn}>Next turn</Button>
+              <Button
+                uppercase
+                type="button"
+                data-test-id="next-button"
+                onClick={this.handleNextTurn}
+              >
+                Next turn
+              </Button>
             </AppCardHeader>
             <AppCardBody>
               <InitiativeList
